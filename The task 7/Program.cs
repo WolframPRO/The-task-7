@@ -25,16 +25,18 @@ namespace The_task_7
                 }
             } while (!ok); //ввода размера слов
 
-            List<int>[] mass = new List<int>[SIZE*SIZE];
+            List<string>[] mass = new List<string>[SIZE*SIZE];
             int a = 1;
-            for (int n = 0; n < SIZE * SIZE - 1; n++)
+            for (int n = 0; n < SIZE * SIZE; n++)
             {
-                mass[n] = perevod(n);
+                mass[n] = perevod(n, SIZE);
             }
 
             Console.WriteLine();
 
-            for (int i = 0; i < (SIZE * SIZE - 1); i++)
+
+
+            for (int i = 0; i < (SIZE * SIZE); i++)
             {
                 mass[i].ForEach(Console.Write);
                 Console.WriteLine();
@@ -43,16 +45,20 @@ namespace The_task_7
             Console.ReadKey();
         }
 
-        private static List<int> perevod(int temp)
+        private static List<string> perevod(int temp, int S)
         {
             int temp1 = 0;
-            List<int> s = new List<int>();
+            List<string> s = new List<string>();
             while (temp > 0)
             {
                 temp1 = temp % 2;
                 temp = temp / 2;
-                s.Add(temp1);
+                s.Add(temp1.ToString());
             }
+         //   s.Reverse();
+          
+            while(s.Count < S)
+                s.Add("0");
             return (s);
         }
     }
